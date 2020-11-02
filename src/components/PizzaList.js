@@ -28,7 +28,7 @@ export default function PizzaList() {
       <ul>
         {pizza_sorted.map((pizza) => {
           return (
-            <li>
+            <li key={pizza.id}>
               <strong>{pizza.name} </strong>
               Description: {pizza.description}
               Number of times bought: {pizza.bought}.

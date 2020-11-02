@@ -31,6 +31,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_PIZZA": {
       // => Ask yourself: what is action.payload?
+      console.log("what is actionpayload", action.payload);
       return {
         ...state,
         pizzas: [
