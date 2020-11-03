@@ -1,6 +1,7 @@
 const initialState = {
   user: {
     name: "Helva",
+    favourites: [357311, 161235],
   },
   pizzas: [
     {
@@ -43,6 +44,29 @@ export default function reducer(state = initialState, action) {
             bought: 0,
           },
         ],
+      };
+    }
+    case "TOGGLE_FAVORITE_PIZZA": {
+      const pizzaId = action.payload;
+      const pizzaAlreadyFavourite = state.user.favourites.includes(pizzaId);
+      let newFavourites;
+      if (pizzaAlreadyFavourite) {
+        newFavourites = state.user.favourites.filter((favouriteId) => {
+          if (favouriteId !== pizzaId) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      } else {
+        newFavourites = [...state.user.favourites, action.payload];
+      }
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favourites: newFavourites,
+        },
       };
     }
     default: {
